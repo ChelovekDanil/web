@@ -1,0 +1,95 @@
+.Header {
+  color: black;
+  background-color: black;
+  display: flex;
+  position: sticky;
+  top: 0px;
+  font-family: 'Sometype Mono', monospace;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  outline: 1px solid #FFF;}
+
+#logo {
+  max-height: 40px;
+  width: auto;
+}
+
+#accountIcon {
+  max-height: 60px;
+  width: auto;
+}
+
+.ButtonBlock {
+  display: flex;
+  margin: 0px;
+  margin-left: 40px;
+  list-style: none;
+}
+
+.link {
+  font-size: 1.5rem;
+  margin-right: 200px;
+  text-decoration: none;
+  color: black;
+}
+
+.link:hover {
+  outline: 2px solid #ff0000;
+  outline-offset: 3px;
+  transition: 0.1s;
+}
+
+.link:focus {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+}
+
+#popular {
+  background-color: white;
+  border-radius: 20px;
+  padding: 10px;
+}
+
+#film {
+  background-color: white;
+  border-radius: 20px;
+  padding: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+#serial  {
+  background-color: white;
+  border-radius: 20px;
+  padding: 10px;
+  padding-left: 22px;
+  padding-right: 22px;
+}
+
+/* Media query for smaller screens */
+@media only screen and (max-width: 768px) {
+  .Header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  ul {
+    margin-top: 10px;
+    margin-left: 0;
+  }
+
+  #logo {
+    margin-bottom: 10px;
+  }
+
+  #accountIcon {
+    display: block; /* show account icon on smaller screens */
+    margin-right: 20px;
+  }
+
+  li {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+}

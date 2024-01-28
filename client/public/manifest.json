@@ -1,0 +1,8 @@
+{
+  "short_name": "netflix",
+  "name": "netflix Inc",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

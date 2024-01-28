@@ -1,0 +1,43 @@
+.Image {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 10px;
+    font-family: 'Sometype Mono', monospace;
+    padding: 10px;
+}
+
+.Cards {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+  
+.title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 10px;
+    margin: 0px;
+    margin-top: 4px;
+}
+
+.discription {
+    font-size: 14px;
+    margin: 0px;
+    margin-top: 4px;
+}
+  
+#logoVideo {
+    width: 300px;
+    height: 300px;
+    margin-top: 5px;
+    border-radius: 15%;
+}
+
+#logoVideo:hover {
+    outline: 3px solid #ff0000;
+    transition: 0.1s;
+}
+
+#logoVigeo::after {
+    outline: 3px solid #ffffff;
+}
