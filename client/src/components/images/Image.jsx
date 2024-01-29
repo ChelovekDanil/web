@@ -52,7 +52,7 @@ function Image() {
             <div className='Cards' key={photo.id}>
                 <img src={photo.url} alt='card' id='logoVideo'/>
                 <p className='title'>{photo.title}</p>
-                <p className='discription'>{photo.discription}</p>
+                <p className='discription'>{photo.discriptions}</p>
             </div>
         )}
         </div>
