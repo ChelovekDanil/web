@@ -1,22 +1,19 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using server.Services.Interfaces;
 using WebApi.DBClasses;
 
-namespace WebApi.Controllers
+namespace server.Services
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class FilmsController : Controller
+    public class CategoryService : ICategoryService
     {
-        [HttpGet]
-        public List<Films> Index(int count)
-        {
-            using (WebContext db = new WebContext())
+        public List<Films> Category(int count)
+        {          
+            using (WebContext db = new())
             {
                 int countImage = 21;
                 Random rand = new Random();
 
                 List<Films> films = (from film in db.Films.Skip(countImage * count).Take(countImage) select film).ToList();
-                
+
                 for (int i = 0; i < films.Count; i++)
                 {
                     int j = rand.Next(i, films.Count);

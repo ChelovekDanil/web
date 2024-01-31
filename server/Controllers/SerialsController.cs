@@ -4,7 +4,7 @@ using WebApi.DBClasses;
 namespace WebApi.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class SerialsController : Controller
     {
         [HttpGet]

@@ -3,8 +3,8 @@ using WebApi.DBClasses;
 
 namespace WebApi.Controllers
 {
+    [Route("api/[controller]")]
     [ApiController]
-    [Route("[controller]")]
     public class PopularController : Controller
     {
         [HttpGet]

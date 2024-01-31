@@ -12,7 +12,7 @@ function Image() {
 
   useEffect(() => {
     if (fetching) {
-      axios.get(`https://localhost:7110${window.location.pathname}?count=${currentPage}`)
+      axios.get(`https://localhost:7257/api${window.location.pathname}?count=${currentPage}`)
         .then(response => {
           // add new element to array
           setPhotos([...photos, ...response.data]);

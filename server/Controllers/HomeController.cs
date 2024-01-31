@@ -1,36 +1,24 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System;
+using server.Services.Interfaces;
 using WebApi.DBClasses;
 
 namespace WebApi.Controllers
 {
+    [Route("api/[controller]")]
     [ApiController]
-    [Route("[controller]")]
     public class HomeController : ControllerBase
     {
-        [HttpGet]
-        public IResult Index(int count)
+        private ICategoryService _categoryService;
+
+        public HomeController(ICategoryService categoryService)
         {
-            using (WebContext db = new WebContext())
-            {
-                int countImage = 6;
-                Random rand = new Random();
+            _categoryService = categoryService;
+        }
 
-                List<Image> images = (from image in db.Images.Skip(countImage * count).Take(countImage) select image).ToList();
-
-                for (int i = 0; i < images.Count; i++)
-                {
-                    int j = rand.Next(i, images.Count);
-
-                    Image temp = images[i];
-                    images[i] = images[j];
-                    images[j] = temp;
-                }
-
-                return Results.Json(images);
-            }
+        [HttpGet]
+        public List<Films> Category(int count)
+        {
+            return _categoryService.Category(count);
         }
     }
-    public record Card(string Title, string Discription, string Url);
 }
