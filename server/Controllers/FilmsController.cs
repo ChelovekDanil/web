@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using server.Services.Interfaces;
 using WebApi.DBClasses;
 
 namespace WebApi.Controllers
@@ -7,27 +8,17 @@ namespace WebApi.Controllers
     [ApiController]
     public class FilmsController : Controller
     {
-        [HttpGet]
-        public List<Films> Index(int count)
+        private IFilmsService _filmsService;
+
+        public FilmsController(IFilmsService filmsService)
         {
-            using (WebContext db = new WebContext())
-            {
-                int countImage = 21;
-                Random rand = new Random();
+            _filmsService = filmsService;
+        }
 
-                List<Films> films = (from film in db.Films.Skip(countImage * count).Take(countImage) select film).ToList();
-                
-                for (int i = 0; i < films.Count; i++)
-                {
-                    int j = rand.Next(i, films.Count);
-
-                    Films temp = films[i];
-                    films[i] = films[j];
-                    films[j] = temp;
-                }
-
-                return films;
-            }
+        [HttpGet]
+        public List<Films> Catogory(int count)
+        {
+            return _filmsService.Category(count);
         }
     }
 }

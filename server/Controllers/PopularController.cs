@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using server.Services.Interfaces;
 using WebApi.DBClasses;
 
 namespace WebApi.Controllers
@@ -7,27 +8,17 @@ namespace WebApi.Controllers
     [ApiController]
     public class PopularController : Controller
     {
-        [HttpGet]
-        public IResult Index(int count)
+        private IPopularService _popularService;
+
+        public PopularController(IPopularService popularService)
         {
-            using (WebContext db = new WebContext())
-            {
-                int countImage = 21;
-                Random rand = new Random();
+            _popularService = popularService;
+        }
 
-                List<Popular> populars = (from popular in db.Populars.Skip(countImage * count).Take(countImage) select popular).ToList();
-
-                for (int i = 0; i < populars.Count; i++)
-                {
-                    int j = rand.Next(i, populars.Count);
-
-                    Popular temp = populars[i];
-                    populars[i] = populars[j];
-                    populars[j] = temp;
-                }
-
-                return Results.Json(populars);
-            }
+        [HttpGet]
+        public List<Popular> Category(int count)
+        {
+            return _popularService.Category(count);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using server.Services.Interfaces;
 using WebApi.DBClasses;
 
 namespace WebApi.Controllers
@@ -7,27 +8,17 @@ namespace WebApi.Controllers
     [Route("api/[controller]")]
     public class SerialsController : Controller
     {
-        [HttpGet]
-        public IResult Index(int count)
+        private ISerialsService _serialsService;
+
+        public SerialsController (ISerialsService serialsService)
         {
-            using (WebContext db = new WebContext())
-            {
-                int countImage = 21;
-                Random rand = new Random();
+            _serialsService = serialsService;
+        }
 
-                List<Serials> serials = (from serial in db.Serials.Skip(countImage * count).Take(countImage) select serial).ToList();
-
-                for (int i = 0; i < serials.Count; i++)
-                {
-                    int j = rand.Next(i, serials.Count);
-
-                    Serials temp = serials[i];
-                    serials[i] = serials[j];
-                    serials[j] = temp;
-                }
-
-                return Results.Json(serials);
-            }
+        [HttpGet]
+        public List<Serials> Category(int count) 
+        {
+            return _serialsService.Category(count);
         }
     }
 }

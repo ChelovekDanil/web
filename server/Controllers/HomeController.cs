@@ -8,9 +8,9 @@ namespace WebApi.Controllers
     [ApiController]
     public class HomeController : ControllerBase
     {
-        private ICategoryService _categoryService;
+        private IFilmsService _categoryService;
 
-        public HomeController(ICategoryService categoryService)
+        public HomeController(IFilmsService categoryService)
         {
             _categoryService = categoryService;
         }
