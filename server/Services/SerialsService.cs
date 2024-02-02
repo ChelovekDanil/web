@@ -3,28 +3,25 @@ using WebApi.DBClasses;
 
 namespace server.Services
 {
-    public class SerialsService : ISerialsService
+    public class SerialsService : IMovieService
     {
-        public List<Serials> Category(int count)
+        public List<Movies> GetMovies(int count)
         {
-            using (WebContext db = new())
+            int countCards = 21;
+            Random rand = new();
+
+            using WebContext db = new();
+
+            List<Movies> movies = new(from movie in db.Movies.Skip(countCards * count).Take(countCards) where movie.Category == "serial" select movie);
+            
+            for (int i = 0; i < movies.Count; i++)
             {
-                int countCards = 21;
-                Random rand = new();
+                int j = rand.Next(i, movies.Count);
 
-                List<Serials> serials = (from serial in db.Serials.Skip(countCards * count).Take(countCards) select serial).ToList();
-
-                for (int i = 0; i < serials.Count; i++)
-                {
-                    int j = rand.Next(i, serials.Count);
-
-                    Serials temp = serials[i];
-                    serials[i] = serials[j];
-                    serials[j] = temp;
-                }
-
-                return serials;
+                (movies[i], movies[j]) = (movies[j], movies[i]);
             }
+            
+            return movies;
         }
     }
 }

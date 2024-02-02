@@ -6,19 +6,14 @@ namespace WebApi.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class SerialsController : Controller
+    public class SerialsController([FromKeyedServices("serials")]IMovieService serialsService) : Controller
     {
-        private ISerialsService _serialsService;
-
-        public SerialsController (ISerialsService serialsService)
-        {
-            _serialsService = serialsService;
-        }
+        private readonly IMovieService _serialsService = serialsService;
 
         [HttpGet]
-        public List<Serials> Category(int count) 
+        public List<Movies> GetMovies(int count) 
         {
-            return _serialsService.Category(count);
+            return _serialsService.GetMovies(count);
         }
     }
 }

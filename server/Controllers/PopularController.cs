@@ -6,19 +6,14 @@ namespace WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PopularController : Controller
+    public class PopularController([FromKeyedServices("popular")]IMovieService popularService) : Controller
     {
-        private IPopularService _popularService;
-
-        public PopularController(IPopularService popularService)
-        {
-            _popularService = popularService;
-        }
+        private readonly IMovieService _popularService = popularService;
 
         [HttpGet]
-        public List<Popular> Category(int count)
+        public List<Movies> GetMovies(int count)
         {
-            return _popularService.Category(count);
+            return _popularService.GetMovies(count);
         }
     }
 }

@@ -2,8 +2,8 @@
 
 namespace server.Services.Interfaces
 {
-    public interface IPopularService
+    public interface IMovieService
     {
-        List<Popular> Category(int count);
+        List<Movies> GetMovies(int count);
     }
 }

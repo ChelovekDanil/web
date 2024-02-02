@@ -1,30 +1,28 @@
 ﻿using server.Services.Interfaces;
 using WebApi.DBClasses;
+using System.Diagnostics;
 
 namespace server.Services
 {
-    public class FilmsService : IFilmsService
+    public class FilmsService : IMovieService
     {
-        public List<Films> Category(int count)
-        {          
-            using (WebContext db = new())
+        public List<Movies> GetMovies(int count)
+        {
+            int countCards = 21;
+            Random rand = new();
+
+            using WebContext db = new();
+
+            List<Movies> movies = new(from movie in db.Movies.Skip(countCards * count).Take(countCards) where movie.Category == "film" select movie);
+
+            for (int i = 0; i < movies.Count; i++)
             {
-                int countCards = 21;
-                Random rand = new();
+                int j = rand.Next(i, movies.Count);
 
-                List<Films> films = (from film in db.Films.Skip(countCards * count).Take(countCards) select film).ToList();
-
-                for (int i = 0; i < films.Count; i++)
-                {
-                    int j = rand.Next(i, films.Count);
-
-                    Films temp = films[i];
-                    films[i] = films[j];
-                    films[j] = temp;
-                }
-
-                return films;
+                (movies[i], movies[j]) = (movies[j], movies[i]);
             }
+            
+            return movies;
         }
     }
 }

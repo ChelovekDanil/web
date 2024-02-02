@@ -1,12 +1,9 @@
 ﻿namespace WebApi.DBClasses;
-
-public partial class Image
+public class Movies
 {
     public int Id { get; set; }
-
     public string? Title { get; set; }
-
-    public string? Discriptions { get; set; }
-
+    public string? Discription { get; set; }
     public string? Url { get; set; }
+    public string? Category { get; set; }
 }

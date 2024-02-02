@@ -8,9 +8,9 @@ builder.Services.AddControllers();
 
 builder.Services.AddCors();
 
-builder.Services.AddTransient<IFilmsService, FilmsService>();
-builder.Services.AddTransient<ISerialsService, SerialsService>();
-builder.Services.AddTransient<IPopularService, PopularService>();
+builder.Services.AddKeyedTransient<IMovieService, FilmsService>("films");
+builder.Services.AddKeyedTransient<IMovieService, SerialsService>("serials");
+builder.Services.AddKeyedTransient<IMovieService, PopularService>("popular");
 
 var app = builder.Build();
 
