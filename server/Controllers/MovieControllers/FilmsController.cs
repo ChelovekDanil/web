@@ -1,13 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using server.Services;
 using server.Services.Interfaces;
 using WebApi.DBClasses;
 
-namespace WebApi.Controllers
+namespace server.Controllers.MovieControlers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
-    public class FilmsController([FromKeyedServices("films")] IMovieService filmsService) : Controller
+    public class FilmsController([FromKeyedServices("films")] IMovieService filmsService) : ControllerBase
     {
         private readonly IMovieService _filmsService = filmsService;
 

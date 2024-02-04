@@ -98,3 +98,12 @@ D:\web\web\server\obj\Debug\net8.0\refint\server.dll
 D:\web\web\server\obj\Debug\net8.0\server.pdb
 D:\web\web\server\obj\Debug\net8.0\server.genruntimeconfig.cache
 D:\web\web\server\obj\Debug\net8.0\ref\server.dll
+D:\web\web\server\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\web\web\server\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+D:\web\web\server\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\web\web\server\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+D:\web\web\server\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+D:\web\web\server\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\web\web\server\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+D:\web\web\server\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+D:\web\web\server\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.InMemory.dll

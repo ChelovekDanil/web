@@ -1,12 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using server.Services.Interfaces;
 using WebApi.DBClasses;
 
-namespace WebApi.Controllers
+namespace server.Controllers.MovieControlers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
-    public class PopularController([FromKeyedServices("popular")]IMovieService popularService) : Controller
+    public class PopularController([FromKeyedServices("popular")] IMovieService popularService) : ControllerBase
     {
         private readonly IMovieService _popularService = popularService;
 

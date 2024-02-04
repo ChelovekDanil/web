@@ -1,19 +1,18 @@
 ﻿using server.Services.Interfaces;
 using WebApi.DBClasses;
-using System.Diagnostics;
 
 namespace server.Services
 {
-    public class FilmsService : IMovieService
+    public class FilmsService(WebContext context) : IMovieService
     {
+        private readonly WebContext _context = context;
+
         public List<Movies> GetMovies(int count)
         {
             int countCards = 21;
             Random rand = new();
 
-            using WebContext db = new();
-
-            List<Movies> movies = new(from movie in db.Movies.Skip(countCards * count).Take(countCards) where movie.Category == "film" select movie);
+            List<Movies> movies = new(from movie in _context.Movies.Skip(countCards * count).Take(countCards) where movie.Category == "film" select movie);
 
             for (int i = 0; i < movies.Count; i++)
             {
