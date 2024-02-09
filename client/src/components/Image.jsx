@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import Header from '../header/Header';
+import Header from './Header';
 import axios from 'axios';
-import './Image.css';
-import { useLocation } from 'react-router-dom';
+import './style/Image.css';
+import { json, useLocation } from 'react-router-dom';
 
 function Image() {
   const [photos, setPhotos] = useState([]);
@@ -11,20 +11,25 @@ function Image() {
   const location = useLocation();
 
   useEffect(() => {
+    const token = JSON.parse(localStorage.getItem("accessToken"));
+    console.log(token);
     if (fetching) {
-      axios.get(`https://localhost:7257/api${window.location.pathname}?count=${currentPage}`)
-        .then(response => {
-          // add new element to array
-          setPhotos([...photos, ...response.data]);
-          setCurrentPage(prevState => prevState + 1);
-        })
-        .finally(() => setFetching(false));
+      axios.get(`https://localhost:7261/api${window.location.pathname}?count=${currentPage}`, {
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    })
+    .then(response => {
+        // добавить новые элементы в массив
+        setPhotos([...photos, ...response.data]);
+        setCurrentPage(prevState => prevState + 1);
+    })
+    .finally(() => setFetching(false));
     }
   }, [fetching, currentPage, photos, location])
 
   // если url изменится
   useEffect(() => {
-    console.log("ku");
     const elements = document.querySelectorAll('.Cards');
     elements.forEach(element => element.remove());
     setCurrentPage(0);
