@@ -16,11 +16,10 @@ function AuthPage() {
     }
 
     const click = () => {
-        axios.get(`https://localhost:7261/api/jwttoken/${username}`)
+        axios.get(`https://localhost:7261/api/jwttoken/${username}`, {withCredentials: true})
             .then(response => {
-                //console.log(response.data);
-                localStorage.setItem("accessToken", JSON.stringify(response.data));
-            })
+                localStorage.setItem("access_token", JSON.stringify(response.data));
+            });
 
         console.log(localStorage.getItem("accessToken"));
     }
