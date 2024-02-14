@@ -8,41 +8,27 @@ function Image() {
   const [photos, setPhotos] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
   const [fetching, setFetching] = useState(true);
-  const [pathname, setPathname] = useState("");
+  //const [pathname] = useState("");
   const location = useLocation();
 
   useEffect(() => {
-    const token = JSON.parse(localStorage.getItem("accessToken"));
-    console.log(token);
+    const token = JSON.parse(localStorage.getItem("access_token"));
+
     if (fetching) {
-
-      if (window.location.pathname === "/") {
-        setPathname("/popularmovies");
-      }
-      else {
-        setPathname(window.location.pathname);
-      }
-
-      axios.get(`https://localhost:7261/api${pathname}?count=${currentPage}`, {
+      axios.get(`https://localhost:7261/api${GetPathname()}?count=${currentPage}`, {
         headers: {
             Authorization: `Bearer ${token}`
         }
-    })
-    .then(response => {
-        if (response.status === 200) {
-          setPhotos([...photos, ...response.data]);
-          setCurrentPage(prevState => prevState + 1);
-        }
-        else if (response.status === 401) {
-          axios.get(`https://localhost:7261/api/jwttoken/${"dgdsg"}`, {withCredentials: true})
-            .then(response => {
-                localStorage.setItem("access_token", JSON.stringify(response.data));
-            });
-        }
-    })
-    .finally(() => setFetching(false));
-    }
-  }, [fetching, currentPage, photos, location, pathname])
+      })
+      .then(response => {
+          if (response.status === 200) {
+            setPhotos([...photos, ...response.data]);
+            setCurrentPage(prevState => prevState + 1);
+          }
+      })
+      .finally(() => setFetching(false));
+      }
+  }, [fetching, currentPage, photos, location])
 
   // если url изменится
   useEffect(() => {
@@ -63,6 +49,10 @@ function Image() {
     if (document.documentElement.scrollHeight - (document.documentElement.scrollTop + window.innerHeight) < 500) {
       setFetching(true);
     }
+  }
+
+  const GetPathname = () => {
+    return window.location.pathname === "/" || window.location.pathname === "" ? "/popularmovies" : window.location.pathname
   }
 
   return (

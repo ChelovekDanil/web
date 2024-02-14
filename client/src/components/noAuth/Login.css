@@ -17,27 +17,23 @@
     border-radius: 20px;
 }
 
-.enterText {
-    font-size: 24px;
-}
-
-
-#login {
+.login {
     text-align: center;
     font-size: 40px;
 }
 
-#enter {
+.enter {
     background-color: black;
     outline: 2px solid white;
     border-radius: 6px;
     text-align: center;
     color: white;
+    margin-top: 4px;
     padding: 6px;
     font-size: 20px;
 }
 
-#enter:hover {
+.enter:hover {
     background-color: white;
     outline: 2px solid black;
     color: black;
@@ -45,21 +41,28 @@
 
 }
 
-#enter:active {
+.enter:active {
     outline: 2px solid white;
 }
 
-input {
+.input {
+    display: block;
     border: 2px solid #000;
     border-radius: 6px;
-    margin-top: 5px;
+    margin-top: 10px;
     background-color: white;
-    width: 300px;
-    height: 30px;
-    font-size: 18px;
+    width: 400px;
+    height: 35px;
+    font-size: 22px;
     padding-left: 5px;
 }
 
-p {
+.GoToJoin {
+    display: flex;
+    margin-top: 10px;
+    margin-left: 90%;
+}
+
+.login {
     margin-top: 20px;
 }

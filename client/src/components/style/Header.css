@@ -20,27 +20,27 @@
   width: auto;
 }
 
-.ButtonBlock {
+.NavigateBlock {
   display: flex;
   margin: 0px;
   margin-left: 40px;
   list-style: none;
 }
 
-.link {
+.linkNav {
   font-size: 1.5rem;
   margin-right: 200px;
   text-decoration: none;
   color: black;
 }
 
-.link:hover {
+.linkNav:hover {
   outline: 2px solid #ff0000;
   outline-offset: 3px;
   transition: 0.1s;
 }
 
-.link:focus {
+.linkNav:focus {
   outline: 2px solid #ffffff;
   outline-offset: 3px;
 }
@@ -65,6 +65,36 @@
   padding: 10px;
   padding-left: 22px;
   padding-right: 22px;
+}
+
+.linkAuth {
+  background-color: white;
+  font-size: 1.5rem;
+  margin-right: 15px;
+  text-decoration: none;
+}
+
+.linkAuth:hover {
+  outline: 2px solid #ff0000;
+  outline-offset: 3px;
+  transition: 0.1s;
+}
+
+.linkAuth:focus {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+}
+
+#logIn {
+  background-color: white;
+  border-radius: 20px;
+  padding: 10px;
+}
+
+#join {
+  background-color: white;
+  border-radius: 20px;
+  padding: 10px;
 }
 
 /* Media query for smaller screens */
