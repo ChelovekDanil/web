@@ -1,0 +1,6 @@
+@NetflixWebApi_HostAddress = http://localhost:5102
+
+GET {{NetflixWebApi_HostAddress}}/api/popularmovies/
+Accept: application/json
+
+###

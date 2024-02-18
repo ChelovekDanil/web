@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetflixWebApi", "NetflixWebApi.csproj", "{37A1A874-8D95-4476-931A-30469A146BB3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Netflix.Application", "..\Netflix.Application\Netflix.Application.csproj", "{E3609969-600C-4EBF-8880-1C70B1841C9A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Netflix.Domain", "..\Netflix.Domain\Netflix.Domain.csproj", "{7E5CFE8B-8F08-4DCE-8266-A6A8A852A370}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Netflix.Infrastucture", "..\Netflix.Infrastucture\Netflix.Infrastucture.csproj", "{7BE3A030-69C9-4C2C-B973-8EBF24BD9D4E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{37A1A874-8D95-4476-931A-30469A146BB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37A1A874-8D95-4476-931A-30469A146BB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37A1A874-8D95-4476-931A-30469A146BB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37A1A874-8D95-4476-931A-30469A146BB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3609969-600C-4EBF-8880-1C70B1841C9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3609969-600C-4EBF-8880-1C70B1841C9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3609969-600C-4EBF-8880-1C70B1841C9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3609969-600C-4EBF-8880-1C70B1841C9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E5CFE8B-8F08-4DCE-8266-A6A8A852A370}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E5CFE8B-8F08-4DCE-8266-A6A8A852A370}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E5CFE8B-8F08-4DCE-8266-A6A8A852A370}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E5CFE8B-8F08-4DCE-8266-A6A8A852A370}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BE3A030-69C9-4C2C-B973-8EBF24BD9D4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BE3A030-69C9-4C2C-B973-8EBF24BD9D4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BE3A030-69C9-4C2C-B973-8EBF24BD9D4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BE3A030-69C9-4C2C-B973-8EBF24BD9D4E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {648F631C-889A-4DEC-AF53-D3103A2E5F37}
+	EndGlobalSection
+EndGlobal
