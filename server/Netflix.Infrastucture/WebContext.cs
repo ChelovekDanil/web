@@ -48,9 +48,10 @@ public partial class WebContext : DbContext
         modelBuilder.Entity<UsersTodo>(entity =>
         {
             entity
-                .HasNoKey()
-                .ToTable("users");
+                .ToTable("users")
+                .HasKey(e => e.Id);
             entity.Property(e => e.Id)
+                .HasMaxLength(36)
                 .HasColumnName("id");
             entity.Property(e => e.Username)
                 .HasMaxLength(50)

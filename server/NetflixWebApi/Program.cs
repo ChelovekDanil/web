@@ -27,13 +27,13 @@ builder.Services.AddKeyedScoped<IMovieService, PopularMovieService>("popularmovi
 builder.Services.AddKeyedScoped<IMovieService, FilmService>("film");
 builder.Services.AddKeyedScoped<IMovieService, SerialService>("serial");
 builder.Services.AddScoped<IJwtService, JwtTokenService>();
-builder.Services.AddScoped<ILoginService, LoginService>();
+builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IAuthTokensService, AuthTokensService>();
 
 builder.Services.AddScoped<IPopularMovieRepository, PopularMovieRepository>();
 builder.Services.AddScoped<IFilmRepository, FilmRepository>();
 builder.Services.AddScoped<ISerialsRepository, SerialsRepository>();
-builder.Services.AddScoped<ILoginRepository, LoginRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IAuthTokensRepository, AuthTokensRepository>();
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
