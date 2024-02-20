@@ -2,14 +2,14 @@ import { useEffect, useState } from 'react';
 import Header from './Header';
 import axios from 'axios';
 import './style/Image.css';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 function Image() {
   const [photos, setPhotos] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
   const [fetching, setFetching] = useState(true);
-  //const [pathname] = useState("");
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const token = JSON.parse(localStorage.getItem("access_token"));
@@ -26,6 +26,7 @@ function Image() {
             setCurrentPage(prevState => prevState + 1);
           }
       })
+      .catch(() => navigate("/login"))
       .finally(() => setFetching(false));
       }
   }, [fetching, currentPage, photos, location])

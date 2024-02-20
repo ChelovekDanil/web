@@ -44,23 +44,26 @@ namespace NetflixWebApi.Controllers.AuthControllers
                     SameSite = SameSiteMode.None
                 });
 
-            return user.Password == request.Password ? Ok(new AuthResponse(user.Id, user.Username, tokens.AccessToken)) : NotFound();
+            return user.Password == request.Password ? Ok(new AuthResponse(user.Username, tokens.AccessToken)) : NotFound();
         }
 
-        [Route("Registation")]
+        [Route("Registration")]
         [HttpPost]
-        public async Task<ActionResult<AuthResponse>> Registration([FromBody] AuthRequest request)
+        [ProducesResponseType<AuthResponse>(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<IActionResult> Registration([FromBody] AuthRequest request)
         {
             if (request.Username is null || request.Password is null)
             {
-                return NotFound();
+                return BadRequest("Null request");
             }
 
             var user = await _userService.CreateUserAsync(request.Username, request.Password);
 
             if (user is null)
             {
-                return NotFound();
+                return StatusCode(500, "User exists");
             }
 
             var tokens = await _authTokensService.GetAuthTokensAsync(request.Username);
@@ -73,7 +76,7 @@ namespace NetflixWebApi.Controllers.AuthControllers
                     SameSite = SameSiteMode.None
                 });
 
-            return Ok(new AuthResponse(user.Id, user.Username, tokens.AccessToken));
+            return StatusCode(201, new AuthResponse(user.Username, tokens.AccessToken));
         }
     }
 }

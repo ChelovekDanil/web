@@ -1,7 +1,7 @@
 import './Login.css'
 import { useState } from 'react';
 import { Link, useNavigate     } from 'react-router-dom';
-import LoginAxios from '../axios/LoginAxios';
+import AuthAxios from '../axios/AuthAxios';
 
 function Login() {
     const [username, setUsername] = useState("");
@@ -16,10 +16,10 @@ function Login() {
         setPassword(e.target.value);
     }
 
-    // get access and refresh token
-    function click () {
-        if (username != "" && password != "") {
-            LoginAxios(username, password);
+    // get access and refresh token and auth
+    const click = () => {
+        if (username !== "" && password !== "") {
+            AuthAxios(username, password, "https://localhost:7261/api/auth/login");
             navigate("/popularmovies");
         }
         else {
