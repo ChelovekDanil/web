@@ -5,7 +5,6 @@ using Netflix.Domain.Interface;
 
 namespace NetflixWebApi.Controllers.MoviesControllers
 {
-    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class FilmsController : ControllerBase

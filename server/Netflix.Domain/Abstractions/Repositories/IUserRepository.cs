@@ -6,5 +6,6 @@ namespace Netflix.Domain.Interface.Repositories
     {
         Task<UsersTodo?> GetUserAsync(string Username);
         Task<UsersTodo?> CreateUserAsync(string Username, string Password);
+        Task<int> DeleteUserAsync(string Username);
     }
 }

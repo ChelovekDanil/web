@@ -20,8 +20,10 @@ namespace NetflixWebApi.Controllers.AuthControllers
         [HttpGet("{username}")]
         public ActionResult<string> JwtToken(string username)
         {
+            // access token
             var jwt = _jwtService.GetJwtToken(username);
 
+            // refresh token
             Response.Cookies.Append("refresh_token", $"{jwt.RefreshToken}",
                 new CookieOptions
                 {

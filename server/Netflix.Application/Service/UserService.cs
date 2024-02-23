@@ -21,5 +21,10 @@ namespace Netflix.Application.Service
         {
             return await _userRepository.CreateUserAsync(Username, Password);
         }
+
+        public async Task<int> DeleteUserAsync(string Username)
+        {
+            return await _userRepository.DeleteUserAsync(Username);
+        }
     }
 }
