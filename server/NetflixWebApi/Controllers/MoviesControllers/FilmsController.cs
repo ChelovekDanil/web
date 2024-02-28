@@ -11,7 +11,7 @@ namespace NetflixWebApi.Controllers.MoviesControllers
     {
         private readonly IMovieService _movieService;
 
-        public FilmsController([FromKeyedServices("film")] IMovieService movieService)
+        public FilmsController([FromKeyedServices("filmService")] IMovieService movieService)
         {
             _movieService = movieService;
         }

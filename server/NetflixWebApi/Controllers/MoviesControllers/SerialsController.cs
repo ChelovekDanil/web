@@ -10,7 +10,7 @@ namespace NetflixWebApi.Controllers.MoviesControllers
     {
         private readonly IMovieService _movieService;
 
-        public SerialsController([FromKeyedServices("serial")] IMovieService movieService)
+        public SerialsController([FromKeyedServices("serialService")] IMovieService movieService)
         {
             _movieService = movieService;
         }

@@ -29,7 +29,7 @@ function Image() {
       .catch(() => navigate("/login"))
       .finally(() => setFetching(false));
       }
-  }, [fetching, currentPage, photos, location])
+  }, [fetching, currentPage, photos, location, navigate])
 
   // если url изменится
   useEffect(() => {

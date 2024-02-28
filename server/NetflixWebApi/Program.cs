@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Netflix.Application.Service;
+using Netflix.Domain.Abstractions.Repositories;
 using Netflix.Domain.common;
 using Netflix.Domain.Interface;
 using Netflix.Domain.Interface.Repositories;
@@ -23,16 +24,16 @@ builder.Services.AddCors();
 builder.Services.AddDbContext<WebContext>(opt =>
     opt.UseNpgsql());
 
-builder.Services.AddKeyedScoped<IMovieService, PopularMovieService>("popularmovie");
-builder.Services.AddKeyedScoped<IMovieService, FilmService>("film");
-builder.Services.AddKeyedScoped<IMovieService, SerialService>("serial");
+builder.Services.AddKeyedScoped<IMovieService, PopularMovieService>("popularMovieService");
+builder.Services.AddKeyedScoped<IMovieService, FilmService>("filmService");
+builder.Services.AddKeyedScoped<IMovieService, SerialService>("serialService");
 builder.Services.AddScoped<IJwtService, JwtTokenService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IAuthTokensService, AuthTokensService>();
 
-builder.Services.AddScoped<IPopularMovieRepository, PopularMovieRepository>();
-builder.Services.AddScoped<IFilmRepository, FilmRepository>();
-builder.Services.AddScoped<ISerialsRepository, SerialsRepository>();
+builder.Services.AddKeyedScoped<BaseMoviesRepository, PopularMovieRepository>("popularMovieRepository");
+builder.Services.AddKeyedScoped<BaseMoviesRepository, FilmRepository>("filmRepository");
+builder.Services.AddKeyedScoped<BaseMoviesRepository, SerialsRepository>("serialsRepository");
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IAuthTokensRepository, AuthTokensRepository>();
 

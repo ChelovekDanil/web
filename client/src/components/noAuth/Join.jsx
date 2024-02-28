@@ -2,12 +2,15 @@ import { useState } from 'react';
 import './Join.css'
 import { Link, useNavigate } from 'react-router-dom';
 import AuthAxios from '../axios/AuthAxios';
+import useAuth from '../forAuth/useAuth';
+import { setItemLocalStorage } from '../localStorege/localStorage';
 
 function Join() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [repeatPassword, setRepeatPassword] = useState("");
     const navigate = useNavigate();
+    const {setAuth} = useAuth();
 
     const ChangeUsername = (e) => {
         setUsername(e.target.value);
@@ -26,6 +29,8 @@ function Join() {
             if (password === repeatPassword) {
                 if (password.length > 8) {
                     AuthAxios(username, password, "https://localhost:7261/api/auth/registration");
+                    setAuth(true);
+                    setItemLocalStorage("isAuth", true);
                     navigate("/popularmovies");
                 }
                 else {

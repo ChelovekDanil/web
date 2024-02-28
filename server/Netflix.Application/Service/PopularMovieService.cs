@@ -1,4 +1,6 @@
-﻿using Netflix.Domain.Interface;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Netflix.Domain.Abstractions.Repositories;
+using Netflix.Domain.Interface;
 using Netflix.Domain.Interface.Repositories;
 using NetflixWebApi;
 
@@ -6,9 +8,9 @@ namespace Netflix.Application.Service
 {
     public class PopularMovieService : IMovieService
     {
-        private readonly IPopularMovieRepository _popularMovieRepository;
+        private readonly BaseMoviesRepository _popularMovieRepository;
 
-        public PopularMovieService(IPopularMovieRepository popularMovieRepository) 
+        public PopularMovieService([FromKeyedServices("popularMovieRepository")]BaseMoviesRepository popularMovieRepository) 
         {
             _popularMovieRepository = popularMovieRepository;
         }

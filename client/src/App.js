@@ -1,20 +1,26 @@
-import { Route, Routes } from "react-router-dom";
+import { useEffect } from 'react';
 import './App.css';
-import Login from './components/noAuth/Login';
-import Join from './components/noAuth/Join';
-import Image from './components/Image';
+import useRoutes from './components/Routes';
+import { getItemLocalStorage } from './components/localStorege/localStorage';
+import useAuth from './components/forAuth/useAuth';
 
-function App() {
+const App = () => {
+  const routes = useRoutes();
+  const {setAuth } = useAuth();
+
+  useEffect(() => {
+    if (getItemLocalStorage("isAuth") === "true") {
+      setAuth(true);
+    }
+    else {
+      setAuth(false);
+      console.log("skflsajkfldj");
+    }
+  }, [setAuth])
+
   return (
     <div className="App"> 
-      <Routes>
-        <Route path='/login' element={<Login/>} />
-        <Route path='/join' element={<Join/>} />
-        <Route path='/' element={<Image/>} />
-        <Route path='/popularmovies' element={<Image/>} />
-        <Route path='/films' element={<Image/>} />
-        <Route path='/serials' element={<Image/>} />
-      </Routes>
+      {routes}
     </div>
   );
 }
