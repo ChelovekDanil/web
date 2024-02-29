@@ -1,4 +1,4 @@
-﻿using Netflix.Domain.common;
+﻿using Netflix.Domain.Models;
 
 namespace Netflix.Domain.Interface.Repositories
 {

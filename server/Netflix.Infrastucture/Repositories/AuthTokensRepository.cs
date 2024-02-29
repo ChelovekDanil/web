@@ -2,6 +2,7 @@
 using Microsoft.IdentityModel.Tokens;
 using Netflix.Domain.common;
 using Netflix.Domain.Interface.Repositories;
+using Netflix.Domain.Models;
 using NetflixWebApi;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;

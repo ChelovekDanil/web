@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Storage;
-using Netflix.Domain.common;
 using Netflix.Domain.Interface.Repositories;
 using Netflix.Domain.Interface.Services;
+using Netflix.Domain.Models;
 
 namespace Netflix.Application.Service
 {

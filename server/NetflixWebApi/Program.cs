@@ -27,7 +27,6 @@ builder.Services.AddDbContext<WebContext>(opt =>
 builder.Services.AddKeyedScoped<IMovieService, PopularMovieService>("popularMovieService");
 builder.Services.AddKeyedScoped<IMovieService, FilmService>("filmService");
 builder.Services.AddKeyedScoped<IMovieService, SerialService>("serialService");
-builder.Services.AddScoped<IJwtService, JwtTokenService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IAuthTokensService, AuthTokensService>();
 
