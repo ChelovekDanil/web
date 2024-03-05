@@ -10,7 +10,7 @@ namespace Netflix.Application.Service
     {
         private readonly BaseMoviesRepository _serialsRepository;
 
-        public SerialService([FromKeyedServices("serialsRepository")]BaseMoviesRepository serialsRepository)
+        public SerialService([FromKeyedServices("serialsRepository")] BaseMoviesRepository serialsRepository)
         {
             _serialsRepository = serialsRepository;
         }

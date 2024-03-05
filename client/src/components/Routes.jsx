@@ -1,10 +1,10 @@
-import { Route, Routes } from "react-router-dom"
+import { Route, Routes, useLocation } from "react-router-dom"
 import Login from "./noAuth/Login";
 import Join from "./noAuth/Join";
 import Image from "./Image";
 import { PrivateRoute } from "./forAuth/PrivateRouter";
-
 export const useRoutes = () => {
+
     return (
       <Routes>
         <Route path='/login' element={<Login/>} />

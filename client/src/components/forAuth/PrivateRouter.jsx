@@ -1,15 +1,18 @@
 import { Navigate, Outlet, useLocation } from "react-router-dom";
-import useAuth from "./useAuth";
 
 export const PrivateRoute = () => {
-  const { isAuthenticated } = useAuth()
-
   const location = useLocation()
 
+  const checkAuth = () => {
+    if (localStorage.getItem("access_token") === "true"){
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
   return (
-    isAuthenticated === true ?
-      <Outlet />
-      :
-      <Navigate to="/login" state={{ from: location }} replace />
+    checkAuth ? <Outlet/> : <Navigate to="/login" state={{ from: location }} replace />
   )
 };

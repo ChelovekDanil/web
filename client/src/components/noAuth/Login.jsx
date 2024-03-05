@@ -2,14 +2,12 @@ import './Login.css'
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import AuthAxios from '../axios/AuthAxios';
-import useAuth from '../forAuth/useAuth';
 import { setItemLocalStorage } from '../localStorege/localStorage';
 
 function Login() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
-    const {setAuth} = useAuth();
 
     const ChangeUsername = (e) => {
         setUsername(e.target.value);
@@ -23,7 +21,6 @@ function Login() {
     const click = () => {
         if (username !== "" && password !== "") {
             AuthAxios(username, password, "https://localhost:7261/api/auth/login");
-            setAuth(true);
             setItemLocalStorage("isAuth", true);
             navigate("/popularmovies", {replace: true});
         }

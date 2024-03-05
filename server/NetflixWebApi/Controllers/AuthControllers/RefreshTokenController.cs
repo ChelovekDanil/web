@@ -29,6 +29,13 @@ namespace NetflixWebApi.Controllers.AuthControllers
                 return NotFound("not found cookie");
             }
 
+            var cookies = Request.Cookies;
+
+            foreach (var cookie in cookies)
+            {
+                await Console.Out.WriteLineAsync($"Имя куки: {cookie.Key}, Значение куки: {cookie.Value}");
+            }
+
             var cookieValue = HttpContext.Request.Cookies["refresh_token"];
 
             var user = await _userService.GetUserAsync(username);

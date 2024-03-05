@@ -3,6 +3,7 @@ import Header from './Header';
 import axios from 'axios';
 import './style/Image.css';
 import { useLocation, useNavigate } from 'react-router-dom';
+import IsValidToken from './axios/IsValidToken';
 
 function Image() {
   const [photos, setPhotos] = useState([]);
@@ -36,6 +37,7 @@ function Image() {
     const elements = document.querySelectorAll('.Cards');
     elements.forEach(element => element.remove());
     setCurrentPage(0);
+    if (IsValidToken) localStorage.setItem("url", GetPathname())
     setFetching(true);
   }, [location])
 
