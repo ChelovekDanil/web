@@ -4,7 +4,7 @@ export const PrivateRoute = () => {
   const location = useLocation()
 
   const checkAuth = () => {
-    if (localStorage.getItem("access_token") === "true"){
+    if (localStorage.getItem("isAuth") === "true"){
       return true;
     }
     else {
@@ -13,6 +13,6 @@ export const PrivateRoute = () => {
   }
 
   return (
-    checkAuth ? <Outlet/> : <Navigate to="/login" state={{ from: location }} replace />
+    checkAuth() ? <Outlet/> : <Navigate to="/login" state={{ from: location }} replace />
   )
 };

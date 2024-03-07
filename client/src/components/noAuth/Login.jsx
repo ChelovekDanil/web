@@ -2,7 +2,6 @@ import './Login.css'
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import AuthAxios from '../axios/AuthAxios';
-import { setItemLocalStorage } from '../localStorege/localStorage';
 
 function Login() {
     const [username, setUsername] = useState("");
@@ -17,12 +16,19 @@ function Login() {
         setPassword(e.target.value);
     }
 
-    // get access and refresh token and auth
+    // authentication
     const click = () => {
         if (username !== "" && password !== "") {
-            AuthAxios(username, password, "https://localhost:7261/api/auth/login");
-            setItemLocalStorage("isAuth", true);
-            navigate("/popularmovies", {replace: true});
+            AuthAxios(username, password, "https://localhost:7261/api/auth/login")
+            .then(success => {
+                if (success) {
+                    localStorage.setItem("isAuth", true);
+                    navigate("/popularmovies", {replace: true});
+                }
+                else {
+                    localStorage.setItem("isAuth", false);
+                }
+            });
         }
         else {
             alert("Enter all fields!")

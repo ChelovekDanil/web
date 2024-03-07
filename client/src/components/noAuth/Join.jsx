@@ -2,7 +2,6 @@ import { useState } from 'react';
 import './Join.css'
 import { Link, useNavigate } from 'react-router-dom';
 import AuthAxios from '../axios/AuthAxios';
-import { setItemLocalStorage } from '../localStorege/localStorage';
 
 function Join() {
     const [username, setUsername] = useState("");
@@ -22,26 +21,38 @@ function Join() {
         setRepeatPassword(e.target.value);
     }
 
+    // for registration
     const Click = () => {
-        if (username !== "" || password !== "") {
-            if (password === repeatPassword) {
-                if (password.length > 8) {
-                    AuthAxios(username, password, "https://localhost:7261/api/auth/registration");
-                    setItemLocalStorage("isAuth", true);
-                    navigate("/popularmovies");
-                }
-                else {
-                    alert("Enter larger password")
-                }
-            }
-            else {
-                alert("Password mismatch")
-            }
-        }
-        else {
+        let isGood = true;
+
+        if (username === "" || password === "") {
             alert("Enter all fields")
+            isGood = false;
         }
-    } 
+
+        if (password !== repeatPassword) {
+            alert("Password mismatch")
+            isGood = false;
+        }
+
+        if (password.length <= 8) {
+            alert("Enter larger password")
+            isGood = false
+        }
+
+        if (isGood) {
+            AuthAxios(username, password, "https://localhost:7261/api/auth/registration")
+                .then(success => {
+                    if (success) {
+                        localStorage.setItem("isAuth", true);
+                        navigate("/popularmovies", {replace: true});
+                    }
+                    else {
+                        localStorage.setItem("isAuth", false);
+                    }
+                });
+            }
+    }
 
     return (
         <div className="EnterWindow">
@@ -53,6 +64,6 @@ function Join() {
             <p className="enter" onClick={() => {Click()}}>Enter</p>
         </div>
     );
-  }
+}
   
 export default Join;

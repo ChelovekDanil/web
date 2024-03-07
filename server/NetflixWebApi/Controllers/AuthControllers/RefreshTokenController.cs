@@ -24,8 +24,11 @@ namespace NetflixWebApi.Controllers.AuthControllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> RefreshToken(string username)
         {
+            await Console.Out.WriteLineAsync($"username: {username}");
+
             if (!HttpContext.Request.Cookies.ContainsKey("refresh_token"))
             {
+                await Console.Out.WriteLineAsync("not cookie");
                 return NotFound("not found cookie");
             }
 
@@ -45,9 +48,19 @@ namespace NetflixWebApi.Controllers.AuthControllers
                 return NotFound("not found user");
             }
 
+            await Console.Out.WriteLineAsync($"user cookie: {user.RefreshToken}");
+
             if (user.RefreshToken == cookieValue)
             {
                 var tokens = await _authTokensService.GetAuthTokensAsync(username);
+
+                Response.Cookies.Append("refresh_token", $"{tokens.RefreshToken}",
+                    new CookieOptions
+                    {
+                        HttpOnly = true,
+                        Secure = true,
+                        SameSite = SameSiteMode.None
+                    });
 
                 return Ok(tokens);
             }

@@ -12,6 +12,8 @@ function Image() {
   const location = useLocation();
   const navigate = useNavigate();
 
+  let keyCard = 0;
+
   useEffect(() => {
     const token = JSON.parse(localStorage.getItem("access_token"));
 
@@ -36,11 +38,15 @@ function Image() {
   useEffect(() => {
     const elements = document.querySelectorAll('.Cards');
     elements.forEach(element => element.remove());
+    
     setCurrentPage(0);
-    if (IsValidToken) localStorage.setItem("url", GetPathname())
+
+    IsValidToken();
+    
     setFetching(true);
   }, [location])
 
+  // при скролле
   useEffect(() => {
     document.addEventListener('scroll', scrollHandler);
     return function() {
@@ -61,15 +67,15 @@ function Image() {
   return (
     <>
       <Header/>
-       <div className="Image">
+      <div className="Image">
         {photos.map(photo =>
-            <div className='Cards' key={photo.id}>
-                <img src={photo.url} alt='card' id='logoVideo'/>
-                <p className='title'>{photo.title}</p>
-                <p className='discription'>{photo.discription}</p>
-            </div>
+          <div className='Cards' key={keyCard++}>
+              <img src={photo.url} alt='movie' id='logoVideo'/>
+              <p className='title'>{photo.title}</p>
+              <p className='discription'>{photo.discription}</p>
+          </div>
         )}
-        </div>
+      </div>
     </>
   );
 }
