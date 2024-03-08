@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Cors;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Netflix.Domain.Interface;
 
 namespace NetflixWebApi.Controllers.MoviesControllers
 {
-    [Route("api/[controller]")]
+    [Authorize]
+    [Route("api/serials")]
     [ApiController]
     public class SerialsController : ControllerBase
     {
@@ -23,4 +25,4 @@ namespace NetflixWebApi.Controllers.MoviesControllers
             return Ok(response);
         }
     }
-}
+}   

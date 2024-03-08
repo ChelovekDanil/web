@@ -30,6 +30,7 @@ function IsValidToken() {
             }
         })
         .catch(() => {
+            console.log("pizdec");
             localStorage.setItem("isAuth", false);
         });
     })

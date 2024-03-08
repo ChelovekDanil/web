@@ -6,7 +6,7 @@ using NetflixWebApi.Constract;
 
 namespace NetflixWebApi.Controllers.AuthControllers
 {
-    [Route("api/[controller]")]
+    [Route("api/refreshToken")]
     [ApiController]
     public class RefreshTokenController : ControllerBase
     {
@@ -20,8 +20,8 @@ namespace NetflixWebApi.Controllers.AuthControllers
 
         [HttpGet]
         [ProducesResponseType<JwtTodo>(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType<string>(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType<string>(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> RefreshToken(string username)
         {
             await Console.Out.WriteLineAsync($"username: {username}");

@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace NetflixWebApi.Controllers.AuthControllers
 {
     [Authorize]
-    [Route("api/[controller]")]
+    [Route("api/TokenValidator")]
     [ApiController]
     public class TokenValidatorController : ControllerBase
     {

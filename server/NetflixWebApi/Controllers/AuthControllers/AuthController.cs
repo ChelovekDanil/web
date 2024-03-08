@@ -6,7 +6,7 @@ using NetflixWebApi.Constract;
 
 namespace NetflixWebApi.Controllers.AuthControllers
 {
-    [Route("api/[controller]")]
+    [Route("api/Auth")]
     [ApiController]
     public class AuthController : ControllerBase
     {

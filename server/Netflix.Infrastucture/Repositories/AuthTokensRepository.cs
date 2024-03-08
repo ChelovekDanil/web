@@ -35,6 +35,8 @@ namespace Netflix.Infrastucture.Repositories
                 .ExecuteUpdateAsync(s => s
                     .SetProperty(user => user.RefreshToken, user => refreshToken.ToString()));
 
+            await Console.Out.WriteLineAsync($"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! {refreshToken}");
+
             return new(new JwtSecurityTokenHandler().WriteToken(accessToken), refreshToken);
         }
     }

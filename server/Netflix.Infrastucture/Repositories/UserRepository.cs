@@ -43,8 +43,28 @@ namespace Netflix.Infrastucture.Repositories
             return newUser;
         }
 
+        public async Task<string?> UpdateUserAsync(string Username, string NewUsername)
+        {
+            if (await GetUserAsync(Username) is null)
+            {
+                return null;
+            }
+
+            var user = await _context.Users
+                .Where(user => user.Username == Username)
+                .ExecuteUpdateAsync(s => s
+                    .SetProperty(user => user.Username, user => NewUsername));
+
+            return user.ToString();
+        }
+
         public async Task<int> DeleteUserAsync(string Username)
         {
+            if (await GetUserAsync(Username) is null)
+            {
+                return 0;
+            }
+
             var result = await _context.Users
                 .Where(user => user.Username == Username)
                 .ExecuteDeleteAsync();
