@@ -1,0 +1,11 @@
+.textBlockMain {
+    padding-left: 600px;
+    padding-right: 600px;
+    padding-top: 200px;
+    text-align: justify;
+}
+
+#textMain {
+    color: white;
+    font-size: 17px;
+}

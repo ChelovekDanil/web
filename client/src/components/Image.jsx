@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react';
-import Header from './Header';
 import axios from 'axios';
 import './style/Image.css';
 import { useLocation, useNavigate } from 'react-router-dom';
 import IsValidToken from './axios/IsValidToken';
 
 function Image() {
-  const [photos, setPhotos] = useState([]);
+  const [movies, setMovies] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
   const [fetching, setFetching] = useState(true);
   const location = useLocation();
@@ -25,14 +24,14 @@ function Image() {
       })
       .then(response => {
           if (response.status === 200) {
-            setPhotos([...photos, ...response.data]);
+            setMovies([...movies, ...response.data]);
             setCurrentPage(prevState => prevState + 1);
           }
       })
       .catch(() => navigate("/login"))
       .finally(() => setFetching(false));
       }
-  }, [fetching, currentPage, photos, location, navigate])
+  }, [fetching, currentPage, movies, location, navigate])
 
   // если url изменится
   useEffect(() => {
@@ -66,13 +65,15 @@ function Image() {
 
   return (
     <>
-      <Header/>
       <div className="Image">
-        {photos.map(photo =>
-          <div className='Cards' key={keyCard++}>
-              <img src={photo.url} alt='movie' id='logoVideo'/>
-              <p className='title'>{photo.title}</p>
-              <p className='discription'>{photo.discription}</p>
+        {movies.map(movie =>
+          <div className='Cards' key={keyCard++} onClick={() => {
+            localStorage.setItem("name_movie", movie.title)
+            navigate("/separatemovie", {replace: true}) 
+            }}>
+              <img src={movie.url} alt='movie' id='logoVideo'/>
+              <p className='title'>{movie.title}</p>
+              <p className='discription'>{movie.discription}</p>
           </div>
         )}
       </div>

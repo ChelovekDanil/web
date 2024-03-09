@@ -1,0 +1,11 @@
+.textBlockAbout {
+    text-align: justify;
+    padding-top: 100px;
+    padding-left: 600px;
+    padding-right: 600px;
+}
+
+#textAbout {
+    color: white;
+    font-size: 17px;
+}

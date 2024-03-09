@@ -5,7 +5,7 @@ using NetflixWebApi;
 
 namespace Netflix.Infrastucture.PopularMovieService
 {
-    public class PopularMovieRepository : BaseMoviesRepository
+    public class PopularMovieRepository : BaseMoviesRepository, IPopularMovieRepository
     {
         private readonly WebContext _context;
 
@@ -21,7 +21,24 @@ namespace Netflix.Infrastucture.PopularMovieService
                 .Take(countCard)
                 .ToListAsync();
 
+            Random rand = new();
+
+            for (int i = 0; i < movies.Count; i++)
+            {
+                int j = rand.Next(i, movies.Count);
+
+                (movies[i], movies[j]) = (movies[j], movies[i]);
+            }
+
             return movies;
+        }
+
+        public async Task<MovieTodo?> GetOneAsync(string Title)
+        {
+            var movie = await _context.Movies
+                .FirstOrDefaultAsync(movie => movie.Title == Title);
+
+            return movie;
         }
     }
 }

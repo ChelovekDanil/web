@@ -21,6 +21,15 @@ namespace Netflix.Infrastucture.Repositories
                 .Take(countCard)
                 .ToListAsync();
 
+            Random rand = new();
+
+            for (int i = 0; i < movies.Count; i++)
+            {
+                int j = rand.Next(i, movies.Count);
+
+                (movies[i], movies[j]) = (movies[j], movies[i]);
+            }
+
             return movies;
         }
     }

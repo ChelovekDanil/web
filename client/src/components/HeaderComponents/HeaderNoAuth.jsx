@@ -4,9 +4,8 @@ function HeaderNoAuth() {
     return (
         <>
             <div className='NavigateBlock'>
-                <Link to='/popularmovies' className='linkNav' id='popular'>Popular</Link>
-                <Link to='/films' className='linkNav' id='film'>Films</Link>
-                <Link to='/serials' className='linkNav' id='serial'>Serials</Link>
+                <Link to='/main' className='linkNav' id='popular'>Main</Link>
+                <Link to='/about' className='linkNav' id='popular'>About</Link>
             </div>
             <div className='AuthBlock'>
                 <Link to='/login' className='linkAuth' id='logIn'>Log in</Link>

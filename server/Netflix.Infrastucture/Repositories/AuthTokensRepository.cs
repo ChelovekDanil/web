@@ -25,7 +25,7 @@ namespace Netflix.Infrastucture.Repositories
                     issuer: AuthOptions.ISSUER,
                     audience: AuthOptions.AUDIENCE,
                     claims: claims,
-                    expires: DateTime.UtcNow.Add(TimeSpan.FromMinutes(1)),
+                    expires: DateTime.UtcNow.Add(TimeSpan.FromMinutes(20)),
                     signingCredentials: new SigningCredentials(AuthOptions.GetSymmetricSecurityKey(), SecurityAlgorithms.HmacSha256));
 
             Guid refreshToken = Guid.NewGuid();

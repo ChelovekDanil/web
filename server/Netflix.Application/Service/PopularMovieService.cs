@@ -1,34 +1,30 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Netflix.Domain.Abstractions.Repositories;
+using Netflix.Domain.Abstractions.Services;
 using Netflix.Domain.Interface;
-using Netflix.Domain.Interface.Repositories;
 using NetflixWebApi;
 
 namespace Netflix.Application.Service
 {
-    public class PopularMovieService : IMovieService
+    public class PopularMovieService : IMovieService, IPopularMovieService
     {
         private readonly BaseMoviesRepository _popularMovieRepository;
+        private readonly IPopularMovieRepository _onePopularMovieRepository;
 
-        public PopularMovieService([FromKeyedServices("popularMovieRepository")]BaseMoviesRepository popularMovieRepository) 
+        public PopularMovieService([FromKeyedServices("popularMovieRepository")]BaseMoviesRepository popularMovieRepository, IPopularMovieRepository onePopularMovieRepository) 
         {
             _popularMovieRepository = popularMovieRepository;
+            _onePopularMovieRepository = onePopularMovieRepository;
         }
 
         public async Task<List<MovieTodo>> GetMovieAsync(int count)
         {
-            var movies = await _popularMovieRepository.GetAsync(count);
+            return await _popularMovieRepository.GetAsync(count);
+        }
 
-            Random rand = new();
-
-            for (int i = 0; i < movies.Count; i++)
-            {
-                int j = rand.Next(i, movies.Count);
-
-                (movies[i], movies[j]) = (movies[j], movies[i]);
-            }
-
-            return movies;
+        public async Task<MovieTodo?> GetOneAsync(string Title)
+        {
+            return await _onePopularMovieRepository.GetOneAsync(Title);
         }
     }
 }
