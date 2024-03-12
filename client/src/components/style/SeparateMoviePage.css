@@ -1,0 +1,32 @@
+.SeparateMoviePageComponent {
+    padding-left: 300px;
+    padding-right: 300px;
+    padding-top: 100px;
+    display: flex;
+}
+
+.SeparateTextBlock {
+    display: block;
+    padding-left: 200px;
+    padding-top: 20px;
+}
+
+#separateMovieImage {
+    width: 500px;
+    height: 450px;
+    border-radius: 50px;
+}
+
+#separateTitle {
+    color: white;
+}
+
+#separateDiscription {
+    color: white;
+    padding-top: 20px;
+}
+
+#separateCategory {
+    color: white;
+    padding-top: 20px;
+}

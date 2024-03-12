@@ -1,4 +1,4 @@
-import logo from '../source/logo.png'
+import logo from '../source/logo.png';
 import HeaderAuth from './HeaderComponents/HeaderAuth';
 import HeaderNoAuth from './HeaderComponents/HeaderNoAuth';
 import CheckAuth from './scripts/CheckAuth';

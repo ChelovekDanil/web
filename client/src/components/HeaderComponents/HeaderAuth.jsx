@@ -1,9 +1,7 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function HeaderAuth() {
-    const click = () => {
-        localStorage.setItem("isAuth", false);
-    }
+    const navigate = useNavigate();
 
     return (
         <>
@@ -13,7 +11,8 @@ function HeaderAuth() {
                 <Link to='/serials' className='linkNav' id='serial'>Serials</Link>
             </div>
             <div className="AuthBlock">
-                <p className='linkAuth' id='logIn' onClick={click}>Me</p>
+                <p className='linkAuth' id='logIn' onClick={ () => {
+                    navigate("/profile")} }>Me</p>
             </div>
         </>
     )

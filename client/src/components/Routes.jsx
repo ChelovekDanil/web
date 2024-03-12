@@ -7,6 +7,7 @@ import { PublicRoute } from "./forAuth/PublicRouter";
 import MainNoAuth from "../pages/MainNoAuth";
 import AboutNoAuth from "../pages/AboutNoAuth";
 import SeparateMoviePage from "../pages/SeparateMoviePage";
+import ProfilePage from "../pages/ProfilePage";
 export const useRoutes = () => {
 
     return (
@@ -25,6 +26,7 @@ export const useRoutes = () => {
           <Route path='/films' element={<MoviePage/>} />
           <Route path='/serials' element={<MoviePage/>} />
           <Route path='/separatemovie' element={<SeparateMoviePage/>} />
+          <Route path='/profile' element={<ProfilePage/>} />
         </Route>
       </Routes>
     )

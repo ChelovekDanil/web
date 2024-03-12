@@ -1,0 +1,31 @@
+.profilePageBlock {
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+}
+
+.profileBlock {
+    text-align: center;
+}
+
+#profileIcon {
+    width: 300px;
+    height: 300px;
+}
+
+#profileUsername {
+    color: white;
+    font-size: 20px;
+}
+
+#profileLogout {
+    font-size: 18px;
+    margin-top: 60px;
+    color: red;
+}
+
+#profileDelete {
+    font-size: 18px;
+    margin-top: 10px;
+    color: red;
+}
