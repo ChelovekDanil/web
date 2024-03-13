@@ -2,11 +2,14 @@ import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import axios from "axios";
 import '../components/style/SeparateMoviePage.css'
+import IsValidToken from "../components/axios/IsValidToken";
 
 function SeparateMoviePage() {
     const [movieData, setMovieData] = useState([]);
 
     useEffect(() => {
+        IsValidToken()
+
         const token = JSON.parse(localStorage.getItem("access_token"));
         const title = localStorage.getItem("name_movie");
 
@@ -17,7 +20,6 @@ function SeparateMoviePage() {
         })
         .then((response) => {
             setMovieData(response.data);
-            console.log(response.data);
         });
     }, [])
 

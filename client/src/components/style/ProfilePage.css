@@ -8,6 +8,23 @@
     text-align: center;
 }
 
+.nameBlock {
+    display: block;
+}
+
+.nameBlockText {
+    display: flex;
+    justify-content: center;
+}
+
+.nameBlockEdit {
+    width: 250px;
+    margin-top: 20px;
+    padding-left: 26px;
+    display: flex;
+    flex-direction: column;
+}
+
 #profileIcon {
     width: 300px;
     height: 300px;
@@ -16,6 +33,40 @@
 #profileUsername {
     color: white;
     font-size: 20px;
+}
+
+#editButton {
+    margin-top: 3px;
+    margin-left: 10px;
+    width: 20px;
+    height: 20px;
+}
+
+#editButton:hover {
+    transform: scale(1.5);
+    transition: 0.1s;
+}
+
+#inputNewName {
+    font-size: 18px;
+    border-radius: 5px; 
+    padding: 3px;
+    outline: 0;
+    border: 0;
+}
+
+#editOldName {
+    margin-top: 10px;
+    font-size: 18px;
+    padding: 2px;
+    color: black;
+    background-color: white;
+    border-radius: 5px;
+}
+
+#editOldName:hover {
+    outline: 2px solid red;
+    transition: 0.08s;
 }
 
 #profileLogout {

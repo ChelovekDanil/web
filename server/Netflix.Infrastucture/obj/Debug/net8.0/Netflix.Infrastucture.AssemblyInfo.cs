@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Netflix.Infrastucture")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+83d36b8df4e0b3508656ada7d8a467bc8e91a48c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+deee7c085d269e47c4ed52df243baa806929aea6")]
 [assembly: System.Reflection.AssemblyProductAttribute("Netflix.Infrastucture")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Netflix.Infrastucture")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

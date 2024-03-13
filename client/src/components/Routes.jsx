@@ -8,6 +8,7 @@ import MainNoAuth from "../pages/MainNoAuth";
 import AboutNoAuth from "../pages/AboutNoAuth";
 import SeparateMoviePage from "../pages/SeparateMoviePage";
 import ProfilePage from "../pages/ProfilePage";
+
 export const useRoutes = () => {
 
     return (

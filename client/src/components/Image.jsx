@@ -17,6 +17,8 @@ function Image() {
     const token = JSON.parse(localStorage.getItem("access_token"));
 
     if (fetching) {
+      IsValidToken();
+
       axios.get(`https://localhost:7261/api${GetPathname()}?count=${currentPage}`, {
         headers: {
             Authorization: `Bearer ${token}`
@@ -28,7 +30,14 @@ function Image() {
             setCurrentPage(prevState => prevState + 1);
           }
       })
-      .catch(() => navigate("/login"))
+      .catch(() => {
+        if (localStorage.getItem("isAuth") === "false") {
+          navigate("/login", {replace: true})
+        }
+        else {
+          navigate(`${GetPathname()}`)
+        }
+      })
       .finally(() => setFetching(false));
       }
   }, [fetching, currentPage, movies, location, navigate])
@@ -39,8 +48,6 @@ function Image() {
     elements.forEach(element => element.remove());
     
     setCurrentPage(0);
-
-    IsValidToken();
     
     setFetching(true);
   }, [location])
@@ -67,11 +74,11 @@ function Image() {
     <>
       <div className="Image">
         {movies.map(movie =>
-          <div className='Cards' key={keyCard++} onClick={() => {
-            localStorage.setItem("name_movie", movie.title)
-            navigate("/separatemovie", {replace: true}) 
-            }}>
-              <img src={movie.url} alt='movie' id='logoVideo'/>
+          <div className='Cards' key={keyCard++}>
+              <img src={movie.url} alt='movie' id='logoVideo' onClick={() => {
+                  localStorage.setItem("name_movie", movie.title);
+                  navigate("/separatemovie");
+                }}/>
               <p className='title'>{movie.title}</p>
               <p className='discription'>{movie.discription}</p>
           </div>

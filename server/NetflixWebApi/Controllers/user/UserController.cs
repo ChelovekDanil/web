@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Netflix.Application.Service;
 using Netflix.Domain.Interface.Services;
 using Netflix.Domain.Models;
+using NetflixWebApi.Constract;
 
 namespace NetflixWebApi.Controllers.user
 {
@@ -62,14 +63,14 @@ namespace NetflixWebApi.Controllers.user
         [ProducesResponseType<string>(StatusCodes.Status201Created)]
         [ProducesResponseType<string>(StatusCodes.Status400BadRequest)]
         [ProducesResponseType<string>(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> UpdateUserAsync(string Username, string NewUsername)
+        public async Task<IActionResult> UpdateUserAsync([FromBody] UpdateUserRequest updateUser)
         {
-            if (Username is null || NewUsername is null)
+            if (updateUser.Username is null || updateUser.NewUsername is null)
             {
                 return BadRequest("invalid data");
             }
 
-            var response = await _userService.UpdateUserAsync(Username, NewUsername);
+            var response = await _userService.UpdateUserAsync(updateUser.Username, updateUser.NewUsername);
 
             if (response is null)
             {

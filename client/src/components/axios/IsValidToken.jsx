@@ -2,6 +2,7 @@ import axios from 'axios';
 
 function IsValidToken() {
     const token = JSON.parse(localStorage.getItem("access_token"));
+    //const navigate = useNavigate();
 
     axios.get('https://localhost:7261/api/TokenValidator', {
         headers: {
@@ -29,10 +30,6 @@ function IsValidToken() {
                 console.log("401");
             }
         })
-        .catch(() => {
-            console.log("pizdec");
-            localStorage.setItem("isAuth", false);
-        });
     })
 }
 
