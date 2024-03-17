@@ -17,7 +17,12 @@ function Image() {
     const token = JSON.parse(localStorage.getItem("access_token"));
 
     if (fetching) {
-      IsValidToken();
+      IsValidToken()
+        .then(success => {
+            if (!success) {
+                navigate("/login", {replace: true})
+            }
+        });
 
       axios.get(`https://localhost:7261/api${GetPathname()}?count=${currentPage}`, {
         headers: {

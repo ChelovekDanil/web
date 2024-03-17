@@ -20,18 +20,20 @@ namespace NetflixWebApi.Controllers.AuthControllers
 
         [Route("Login")]
         [HttpPost]
-        public async Task<ActionResult<AuthResponse>> Login([FromBody] AuthRequest request)
+        [ProducesResponseType<AuthRequest>(StatusCodes.Status200OK)]
+        [ProducesResponseType<string>(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> Login([FromBody] AuthRequest request)
         {
             if (request.Username is null || request.Password is null)
             {
-                return NotFound();
+                return BadRequest("invalid data");
             }
 
             var user = await _userService.GetUserAsync(request.Username);
 
             if (user is null)
             {
-                return NotFound();
+                return BadRequest("user not founded");
             }
 
             var tokens = await _authTokensService.GetAuthTokensAsync(request.Username);
@@ -50,8 +52,7 @@ namespace NetflixWebApi.Controllers.AuthControllers
         [Route("Registration")]
         [HttpPost]
         [ProducesResponseType<AuthResponse>(StatusCodes.Status201Created)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType<string>(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Registration([FromBody] AuthRequest request)
         {
             if (request.Username is null || request.Password is null)
@@ -63,7 +64,7 @@ namespace NetflixWebApi.Controllers.AuthControllers
 
             if (user is null)
             {
-                return StatusCode(500, "User exists");
+                return BadRequest("User exists");
             }
 
             var tokens = await _authTokensService.GetAuthTokensAsync(request.Username);

@@ -56,7 +56,12 @@ function ProfilePage() {
     }
 
     const DeleteAccount = () => {
-        IsValidToken();
+        IsValidToken()
+        .then(success => {
+            if (!success) {
+                navigate("/login", {replace: true})
+            }
+        });
 
         const token = JSON.parse(localStorage.getItem("access_token"));
         const username = JSON.parse(localStorage.getItem("user_name"));

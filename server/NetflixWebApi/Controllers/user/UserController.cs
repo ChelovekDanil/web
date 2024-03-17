@@ -18,9 +18,8 @@ namespace NetflixWebApi.Controllers.user
         }
 
         [HttpGet]
-        [ProducesResponseType<UsersTodo>(StatusCodes.Status200OK)]
+        [ProducesResponseType<UserResponse>(StatusCodes.Status200OK)]
         [ProducesResponseType<string>(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType<string>(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> GetUserAsync(string Username)
         {
             if (Username is null)
@@ -32,16 +31,15 @@ namespace NetflixWebApi.Controllers.user
 
             if (response is null)
             {
-                return StatusCode(500, "server error ;(");
+                return BadRequest("user not founded");
             }
 
-            return Ok(response);
+            return Ok(new UserResponse(response.Id, response.Username));
         }
 
         [HttpPost]
         [ProducesResponseType<UsersTodo>(StatusCodes.Status200OK)]
         [ProducesResponseType<string>(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType<string>(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> CreateUserAsync(string Username, string Password)
         {
             if (Username is null || Password is null)
@@ -49,20 +47,19 @@ namespace NetflixWebApi.Controllers.user
                 return BadRequest("invalid data");
             }
 
-            var resonse = await _userService.CreateUserAsync(Username, Password);
+            var response = await _userService.CreateUserAsync(Username, Password);
             
-            if (resonse is null)
+            if (response is null)
             {
-                return StatusCode(500, "Server error :(");
+                return BadRequest("Server error :(");
             }
 
-            return Ok(resonse);
+            return Ok(new UserResponse(response.Id, response.Username));
         }
 
         [HttpPut]
         [ProducesResponseType<string>(StatusCodes.Status201Created)]
         [ProducesResponseType<string>(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType<string>(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> UpdateUserAsync([FromBody] UpdateUserRequest updateUser)
         {
             if (updateUser.Username is null || updateUser.NewUsername is null)
@@ -74,7 +71,7 @@ namespace NetflixWebApi.Controllers.user
 
             if (response is null)
             {
-                return StatusCode(500, "server error ^(");
+                return BadRequest("server error ^(");
             }
 
             return StatusCode(201, response);
@@ -83,7 +80,6 @@ namespace NetflixWebApi.Controllers.user
         [HttpDelete]
         [ProducesResponseType<int>(StatusCodes.Status200OK)]
         [ProducesResponseType<string>(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType<string>(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> DeleteUserAsync(string Username)
         {
             if (Username is null)
@@ -95,7 +91,7 @@ namespace NetflixWebApi.Controllers.user
 
             if (response == 0)
             {
-                return StatusCode(500, "user not found");
+                return BadRequest("user not found");
             }
 
             return Ok(response);

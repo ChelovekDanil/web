@@ -30,12 +30,11 @@ namespace Netflix.Infrastucture.Repositories
 
             Guid refreshToken = Guid.NewGuid();
 
+            // saved refresh token in datebase
             var user = await _context.Users
                 .Where(user => user.Username == Username)
                 .ExecuteUpdateAsync(s => s
                     .SetProperty(user => user.RefreshToken, user => refreshToken.ToString()));
-
-            await Console.Out.WriteLineAsync($"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! {refreshToken}");
 
             return new(new JwtSecurityTokenHandler().WriteToken(accessToken), refreshToken);
         }

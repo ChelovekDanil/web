@@ -21,7 +21,6 @@ namespace NetflixWebApi.Controllers.AuthControllers
         [HttpGet]
         [ProducesResponseType<JwtTodo>(StatusCodes.Status200OK)]
         [ProducesResponseType<string>(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType<string>(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> RefreshToken(string username)
         {
             await Console.Out.WriteLineAsync($"username: {username}");
@@ -29,7 +28,7 @@ namespace NetflixWebApi.Controllers.AuthControllers
             if (!HttpContext.Request.Cookies.ContainsKey("refresh_token"))
             {
                 await Console.Out.WriteLineAsync("not cookie");
-                return NotFound("not found cookie");
+                return BadRequest("not found cookie");
             }
 
             var cookies = Request.Cookies;

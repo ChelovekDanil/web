@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NetflixWebApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+deee7c085d269e47c4ed52df243baa806929aea6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+546538513fa6c78b9e92735698a3ce0467a9e8a2")]
 [assembly: System.Reflection.AssemblyProductAttribute("NetflixWebApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NetflixWebApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
