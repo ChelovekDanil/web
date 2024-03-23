@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Netflix.Domain.Abstractions.Repositories;
 using Netflix.Domain.Interface;
-using Netflix.Domain.Interface.Repositories;
 using NetflixWebApi;
 
 namespace Netflix.Application.Service

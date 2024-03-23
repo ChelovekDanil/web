@@ -1,12 +1,12 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Netflix.Application.Service;
 using Netflix.Domain.Interface.Services;
 using Netflix.Domain.Models;
 using NetflixWebApi.Constract;
 
 namespace NetflixWebApi.Controllers.user
 {
+    [Authorize]
     [Route("api/User")]
     [ApiController]
     public class UserController : ControllerBase

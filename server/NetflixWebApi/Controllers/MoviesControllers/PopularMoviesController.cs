@@ -19,6 +19,7 @@ namespace NetflixWebApi.Controllers.MoviesControllers
             _popularMovieService = popularMovieService;
         }
 
+        // for many movie
         [HttpGet]
         public async Task<ActionResult<List<MovieTodo>>> PopularMovie(int count)
         {
@@ -27,6 +28,7 @@ namespace NetflixWebApi.Controllers.MoviesControllers
             return Ok(response);
         }
 
+        // for one movie
         [HttpGet("{Title}")]
         public async Task<ActionResult<MovieTodo>> OneMovie([FromRoute] string Title)
         {

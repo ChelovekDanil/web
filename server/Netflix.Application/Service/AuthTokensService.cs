@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.Storage;
-using Netflix.Domain.Interface.Repositories;
+﻿using Netflix.Domain.Interface.Repositories;
 using Netflix.Domain.Interface.Services;
 using Netflix.Domain.Models;
 

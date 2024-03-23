@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Netflix.Domain.Abstractions.Repositories;
-using Netflix.Domain.Interface.Repositories;
 using NetflixWebApi;
 
 namespace Netflix.Infrastucture.PopularMovieService

@@ -1,8 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Netflix.Domain.Interface.Services;
 using Netflix.Domain.Models;
-using NetflixWebApi.Constract;
 
 namespace NetflixWebApi.Controllers.AuthControllers
 {

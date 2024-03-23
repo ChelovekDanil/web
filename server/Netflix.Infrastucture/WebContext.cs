@@ -18,7 +18,7 @@ public partial class WebContext : DbContext
     public virtual DbSet<UsersTodo> Users { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=web;Username=postgres;Password=But64aga@da");
+        => optionsBuilder.UseNpgsql("Host=localhost;Port=your;Database=your;Username=your;Password=your");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

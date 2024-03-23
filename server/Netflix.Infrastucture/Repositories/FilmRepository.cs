@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Netflix.Domain.Abstractions.Repositories;
-using Netflix.Domain.Interface.Repositories;
 using NetflixWebApi;
+
 namespace Netflix.Infrastucture.Repositories
 {
     public class FilmRepository : BaseMoviesRepository
