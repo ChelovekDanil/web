@@ -55,23 +55,6 @@ This project is a streaming service that was inspired by Netflix.
   
   `cd client`
 
-
-  src
-├── Interface
-│   ├── Controllers
-│   └── Models
-├── Domain
-│   ├── Entities
-│   ├── Interfaces
-│   └── Services
-├── Application
-│   ├── UseCases
-│   └── Interfaces
-└── Infrastructure
-    ├── Configurations
-    ├── Data
-    ├── Services
-    └── Security
   
   `npm start`
   
